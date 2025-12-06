@@ -8,4 +8,6 @@ project-date: April 2014
 client: Start Bootstrap
 category: Web Development
 description: Use this area of the page to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
+<img width="1317" height="740" alt="Pepsi Dash" src="https://github.com/user-attachments/assets/b7e89e68-f6fb-4df8-ad23-0fd5beed4ce1" />
+
 ---
