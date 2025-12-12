@@ -514,24 +514,26 @@ footer .footer-below {
 }
 
 
-/* Profile image in header */
+/* Smaller circular image */
 .img-profile {
-    width: 200px;       /* adjust size */
-    height: 200px;      /* keep square to make perfect circle */
-    object-fit: cover;  /* crop image nicely */
-    border-radius: 50%; /* makes it circular */
-    margin: 0 auto 20px; /* center & spacing */
+    width: 150px;      /* smaller than before */
+    height: 150px;
+    object-fit: cover; 
+    border-radius: 50%;
     display: block;
-    border: 4px solid #fff; /* optional white border */
+    margin: 0 auto;    /* centers on small screens */
+    border: 3px solid #fff; /* optional */
 }
 
-/* Adjust name & skills */
-header .intro-text .name {
-    font-size: 3em;
-    font-weight: 700;
+/* Adjust spacing on smaller screens */
+@media (max-width: 767px) {
+    .img-profile {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 15px;
+    }
+    header .intro-text {
+        text-align: center !important;
+    }
 }
 
-header .intro-text .skills {
-    font-size: 1.5em;
-    font-weight: 300;
-}
