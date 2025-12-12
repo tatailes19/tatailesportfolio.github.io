@@ -558,8 +558,8 @@ footer .footer-below {
 }
 
 .logo-item img {
-  height: 60px;        /* increase logo size */
-  width: auto;         /* keeps proportions */
+  height: 80px;        /* increase logo size */
+  width: 250;         /* keeps proportions */
   object-fit: contain;
   opacity: 0.9;
   transition: transform 0.3s ease, opacity 0.3s ease;
