@@ -553,11 +553,11 @@ footer .footer-below {
   overflow: hidden;
   width: 100%;
   position: relative;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .logo-item {
-  width: 250px;
+  width: 300px;
   flex-shrink: 0;
   font-size: 22px;
   font-weight: 700;
