@@ -549,36 +549,45 @@ footer .footer-below {
   flex-direction: row !important;
 }
 
-.logo-track {
-  display: flex;
-  width: calc(200%); /* doubled for infinite scroll effect */
-  animation: scroll 20s linear infinite;
+.logo-slider {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
 }
 
 .logo-item {
-  flex: 0 0 auto;
-  margin: 0 40px;
-  padding: 20px 40px;
-  font-size: 1.5em;
+  width: 250px;
+  flex-shrink: 0;
+  font-size: 22px;
   font-weight: 700;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  white-space: nowrap;
+  padding: 15px;
+  text-align: center;
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin: 0 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
-
-/* Smooth infinite scroll */
+/* Scrolling animation */
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 6));
+  }
 }
-
 /* Force horizontal layout for logo track */
 .logo-track {
     display: flex !important;
     flex-direction: row !important;
     align-items: center;
     white-space: nowrap;
+}
+
+.logo-track {
+  width: calc(250px * 12);
+  animation: scroll 20s linear infinite;
 }
 
 .logo-item {
