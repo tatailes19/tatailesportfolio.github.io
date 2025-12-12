@@ -512,3 +512,26 @@ footer .footer-below {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+/* Profile image in header */
+.img-profile {
+    width: 200px;       /* adjust size */
+    height: 200px;      /* keep square to make perfect circle */
+    object-fit: cover;  /* crop image nicely */
+    border-radius: 50%; /* makes it circular */
+    margin: 0 auto 20px; /* center & spacing */
+    display: block;
+    border: 4px solid #fff; /* optional white border */
+}
+
+/* Adjust name & skills */
+header .intro-text .name {
+    font-size: 3em;
+    font-weight: 700;
+}
+
+header .intro-text .skills {
+    font-size: 1.5em;
+    font-weight: 300;
+}
