@@ -1,28 +1,24 @@
 <!-- Header -->
 <header>
-  <div class="container">
-    <div class="row align-items-center"> <!-- vertically center content -->
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-lg-12">
 
-      <!-- Profile Image -->
-      <div class="col-md-4 text-center">
+        <!-- Profile Image -->
         <img 
           class="img-circle img-profile" 
           src="img/1729096765851.jpeg" 
           alt="profile-pic" 
         />
-      </div>
 
-      <!-- Intro Text -->
-      <div class="col-md-8 text-center text-md-left">
-        <span class="name">{{ site.title }}</span>
-        <hr class="star-light" />
-        <span class="skills">{{ site.skills }}</span>
-        <div class="mt-3">
-          <a href="#portfolio" class="btn btn-primary btn-lg page-scroll">View Portfolio</a>
-          <a href="#contact" class="btn btn-default btn-lg page-scroll">Contact Me</a>
+        <!-- Intro Text -->
+        <div class="intro-text">
+          <span class="name">{{ site.title }}</span>
+          <hr class="star-light" />
+          <span class="skills">{{ site.skills }}</span>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
 </header>
