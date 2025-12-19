@@ -1,77 +1,76 @@
-<!-- Portfolio Modals -->
 {% for post in site.posts %}
 <div class="portfolio-modal modal fade" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg"> <!-- Correct Bootstrap wrapper -->
+  <div class="modal-dialog">
     <div class="modal-content">
-
-      <!-- Close Button -->
-      <div class="close-modal" data-dismiss="modal">
-        <div class="lr"><div class="rl"></div></div>
+      
+      <div class="close-modal-fixed" data-dismiss="modal">
+        <i class="fa fa-times"></i>
       </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 col-lg-offset-1">
-            <div class="modal-body text-center">
+      <div class="modal-body">
+        <div class="modal-header-content">
+          <p class="modal-subtitle">{{ post.category }}</p>
+          <h2 class="modal-title">{{ post.title }}</h2>
+          <div class="header-divider-purple"></div>
+        </div>
 
-              <!-- Title -->
-              <h2 class="modal-title">{{ post.title }}</h2>
-              <hr class="star-primary">
-
-              <!-- Image Carousel -->
-              {% if post.images %}
-              <div id="carousel-{{ post.modal-id }}" class="carousel slide" data-ride="carousel">
-
-                <div class="carousel-inner">
-                  {% for image in post.images %}
-                  <div class="item {% if forloop.first %}active{% endif %}">
-                    <img src="img/portfolio/{{ image }}" class="img-responsive center-block" alt="{{ post.alt }}">
-                  </div>
-                  {% endfor %}
-                </div>
-
-                {% if post.images.size > 1 %}
-                <!-- Carousel Controls -->
-                <a class="left carousel-control" href="#carousel-{{ post.modal-id }}" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#carousel-{{ post.modal-id }}" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-                {% endif %}
-
+        {% if post.images %}
+        <div class="modal-gallery">
+          <div id="carousel-{{ post.modal-id }}" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              {% for image in post.images %}
+              <div class="item {% if forloop.first %}active{% endif %}">
+                <img src="img/portfolio/{{ image }}" class="img-responsive" alt="{{ post.alt }}">
               </div>
-              {% endif %}
-
-              <!-- Description -->
-              {% if post.description %}
-              <p class="modal-description">{{ post.description }}</p>
-              {% endif %}
-
-              <!-- Meta Information -->
-              <ul class="list-inline item-details">
-                {% if post.client %}
-                <li><strong>Client:</strong> {{ post.client }}</li>
-                {% endif %}
-
-                {% if post.project-date %}
-                <li><strong>Date:</strong> {{ post.project-date }}</li>
-                {% endif %}
-
-                {% if post.category %}
-                <li><strong>Service:</strong> {{ post.category }}</li>
-                {% endif %}
-              </ul>
-
-              <!-- Close Button -->
-              <button type="button" class="btn btn-default" data-dismiss="modal">
-                <i class="fa fa-times"></i> Close
-              </button>
-
+              {% endfor %}
             </div>
+
+            {% if post.images.size > 1 %}
+            <a class="left carousel-control" href="#carousel-{{ post.modal-id }}" data-slide="prev">
+              <i class="fa fa-chevron-left"></i>
+            </a>
+            <a class="right carousel-control" href="#carousel-{{ post.modal-id }}" data-slide="next">
+              <i class="fa fa-chevron-right"></i>
+            </a>
+            {% endif %}
           </div>
         </div>
-      </div>
+        {% endif %}
+
+        <div class="modal-main-text">
+          {% if post.description %}
+          <div class="modal-description">
+            {{ post.description | markdownify }}
+          </div>
+          {% endif %}
+
+          {% if post.tech %}
+          <div class="tech-stack">
+            <h5>Built With</h5>
+            <ul class="tech-tags">
+              {% for tech in post.tech %}
+                <li>{{ tech }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="modal-footer-meta">
+          <div class="meta-details">
+            {% if post.client %}
+            <span><strong>Client:</strong> {{ post.client }}</span>
+            {% endif %}
+            {% if post.project-date %}
+            <span><strong>Date:</strong> {{ post.project-date }}</span>
+            {% endif %}
+          </div>
+          
+          <button type="button" class="btn btn-purple-outline" data-dismiss="modal">
+            Back to Portfolio
+          </button>
+        </div>
+      </div> 
 
     </div>
   </div>
