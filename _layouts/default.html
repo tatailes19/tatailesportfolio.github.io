@@ -2,6 +2,40 @@
 <html>
 {% include head.html %}
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Check if the browser supports the observer
+    if (!('IntersectionObserver' in window)) {
+        console.log("Observer not supported - showing all content");
+        return;
+    }
+
+    const observerOptions = {
+        threshold: 0.15, // Trigger when 15% is visible
+        rootMargin: "0px 0px -50px 0px" // Trigger slightly before it enters the viewport
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Once it's shown, we can stop watching it
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, observerOptions);
+
+    // 2. Select the elements you want to animate
+    // I added 'section' and your specific card classes
+    const itemsToReveal = document.querySelectorAll('section, .service-item, .portfolio-card, .edu-card, .contact-card');
+
+    itemsToReveal.forEach(item => {
+        item.classList.add('reveal'); // Hide them initially
+        observer.observe(item);       // Start watching them
+    });
+});
+</script>
+
 <body id="page-top" class="index">
   {% include nav.html %}
   {% include header.html %}

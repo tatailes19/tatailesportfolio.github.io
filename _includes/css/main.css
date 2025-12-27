@@ -3,6 +3,43 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+
+
+:root {
+    /* Brand Colors */
+    --primary-purple: #6a0dad;      /* Main Action Color */
+    --secondary-midnight: #1a062d; /* Footer / Dark Backgrounds */
+    --accent-lavender: #fcfaff;    /* Light background tints */
+    
+    /* Text Colors */
+    --text-dark: #2c3e50;
+    --text-muted: #7f8c8d;
+    --text-white: #ffffff;
+
+    /* Spacing & Transitions */
+    --transition-smooth: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    --border-radius: 20px;
+}
+
+/* 2. THE ANIMATION CLASSES */
+/* We only hide the elements if they have the 'reveal' class */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: var(--transition-smooth);
+    visibility: hidden; /* Prevents clicking invisible links */
+}
+
+/* When the JS triggers, this class is added */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+ 
+
+
+
 body {
     overflow-x: hidden;
 }
@@ -123,27 +160,93 @@ header .intro-text .skills {
     }
 }
 
-@media(min-width:768px) {
-    .navbar-fixed-top {
-        padding: 25px 0;
-        -webkit-transition: padding .3s;
-        -moz-transition: padding .3s;
-        transition: padding .3s;
-    }
+/* --- Modern Glass Navbar --- */
 
-    .navbar-fixed-top .navbar-brand {
-        font-size: 2em;
-        -webkit-transition: all .3s;
-        -moz-transition: all .3s;
-        transition: all .3s;
-    }
+/* 1. Base State (Top of Page) */
+.navbar-default {
+    background-color: transparent; /* Invisible at top */
+    border: none;
+    padding: 25px 0;
+    transition: var(--transition-smooth);
+}
 
-    .navbar-fixed-top.navbar-shrink {
-        padding: 10px 0;
-    }
+.navbar-default .navbar-brand {
+    color: white !important;
+    font-family: 'Inter', sans-serif; /* Matching your new fonts */
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: -1px;
+    transition: var(--transition-smooth);
+}
 
-    .navbar-fixed-top.navbar-shrink .navbar-brand {
-        font-size: 1.5em;
+.navbar-default .navbar-nav li a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    transition: var(--transition-smooth);
+}
+
+/* Modern Underline Hover */
+.navbar-default .navbar-nav li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--primary-purple);
+    transition: width 0.3s;
+    margin-top: 5px;
+}
+
+.navbar-default .navbar-nav li a:hover::after {
+    width: 100%;
+}
+
+.navbar-default .navbar-nav li a:hover {
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* 2. Scrolled State (Navbar-Shrink) */
+/* This triggers when the user scrolls down */
+.navbar-default.navbar-shrink {
+    background-color: rgba(26, 6, 45, 0.8); /* Midnight Purple with Transparency */
+    backdrop-filter: blur(15px); /* THE GLASS EFFECT */
+    -webkit-backdrop-filter: blur(15px);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-default.navbar-shrink .navbar-brand {
+    font-size: 20px;
+}
+
+/* 3. Mobile Hamburger Menu */
+.navbar-default .navbar-toggle {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: var(--primary-purple);
+}
+
+/* Mobile Dropdown Styling */
+@media (max-width: 767px) {
+    .navbar-collapse {
+        background: rgba(26, 6, 45, 0.95);
+        backdrop-filter: blur(20px);
+        border: none;
+        margin-top: 15px;
+        border-radius: 20px;
+        padding: 20px;
     }
 }
 
@@ -171,7 +274,7 @@ header .intro-text .skills {
 }
 
 section {
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 section h2 {
@@ -357,7 +460,7 @@ footer {
 }
 
 footer h3 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 footer .footer-above {
@@ -366,11 +469,11 @@ footer .footer-above {
 }
 
 footer .footer-col {
-    margin-bottom: 50px;
+    margin-bottom: 2px;
 }
 
 footer .footer-below {
-    padding: 25px 0;
+    padding: 2px 0;
     background-color: #{{ site.color.secondary-dark }};
 }
 
@@ -415,201 +518,435 @@ footer .footer-below {
 
 /* Overall Modal Styling */
 /* Modal Wrapper */
+/* --- Modal Container --- */
 .portfolio-modal .modal-dialog {
+
   width: 95%;
+
   max-width: 850px;
+
   margin: 30px auto;
+
 }
+
+
 
 .portfolio-modal .modal-content {
+
   border-radius: 30px;
+
   border: none;
+
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-  background: #ffffff;
+
+  background: var(--text-white);
+
 }
+
+
 
 .portfolio-modal .modal-body {
+
   padding: 60px 50px;
+
   text-align: center;
+
 }
+
+
 
 /* Header Styling */
+
 .modal-subtitle {
+
   text-transform: uppercase;
+
   letter-spacing: 3px;
+
   font-size: 12px;
+
   color: #888;
+
   font-weight: 700;
+
   margin-bottom: 10px;
+
 }
+
+
 
 .modal-title {
+
   font-size: 38px;
+
   font-weight: 800;
-  color: #6a0dad; /* Your Purple */
+
+  color: var(--primary-purple); /* Your Purple */
+
   margin: 0;
+
   line-height: 1.2;
+
 }
+
+
 
 .header-divider-purple {
+
   width: 60px;
+
   height: 5px;
-  background: #6a0dad;
+
+  background: var(--primary-purple);
+
   margin: 25px auto 40px;
+
   border-radius: 10px;
+
 }
+
+
 
 /* Gallery / Carousel Styling */
+
 .modal-gallery {
+
   margin-bottom: 40px;
+
   border-radius: 20px;
+
   overflow: hidden;
+
   box-shadow: 0 15px 35px rgba(106, 13, 173, 0.1);
+
+  /* Optional: keeps the whole carousel container from being too wide */
+
+  max-width: 500px;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
 }
+
+
 
 .carousel-inner img {
-  width: 100%;
+
+  width: auto;       /* Changed from 100% to let image be its natural width */
+
+  max-width: 100%;   /* Ensures it doesn't overflow */
+
   height: auto;
-  max-height: 550px;
+
+  max-height: 300px; /* Reduced from 550px -> This makes it smaller */
+
   object-fit: contain;
+
   background: #f9f9f9;
+
+  margin: 0 auto;    /* Centers the image horizontally */
+
 }
+
+
+
+.modal-description {
+
+  font-size: 10px;             /* readable size */
+
+  color: #333;                 /* dark gray, easier on eyes than pure black */
+
+  line-height: 1.5;           /* nice spacing between lines */
+
+  margin-bottom: 40px;
+
+  text-align: center;          /* smooth text flow for paragraphs */     /* subtle spacing for readability */      /* avoid overflow on long words */
+
+}
+
+
+
+.modal-description p {
+
+  margin-bottom: 15px;         /* spacing between paragraphs */
+
+}
+
+
+
+.modal-description em {
+
+  font-style: italic;
+
+  color: #555;                  /* subtle emphasis */
+
+}
+
+
+
+
+
+
 
 /* Custom Carousel Arrows */
+
 .portfolio-modal .carousel-control {
+
   background: none;
+
   width: 10%;
+
   opacity: 1;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
 }
+
+
 
 .portfolio-modal .carousel-control i {
+
   background: white;
-  color: #6a0dad;
+
+  color: var(--primary-purple);
+
   width: 40px;
+
   height: 40px;
+
   border-radius: 50%;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
   transition: 0.3s;
+
 }
+
+
 
 .portfolio-modal .carousel-control:hover i {
-  background: #6a0dad;
+
+  background: var(--primary-purple);
+
   color: white;
+
 }
+
+
 
 /* Tech Stack Tags */
+
 .tech-stack h5 {
+
   font-size: 13px;
+
   text-transform: uppercase;
+
   color: #aaa;
+
   margin-bottom: 20px;
+
   letter-spacing: 1px;
+
 }
+
+
 
 .tech-tags {
+
   padding: 0;
+
   list-style: none;
+
   display: flex;
+
   flex-wrap: wrap;
+
   justify-content: center;
+
   gap: 10px;
+
   margin-bottom: 40px;
+
 }
+
+
 
 .tech-tags li {
+
   background: rgba(106, 13, 173, 0.08); /* Soft Purple Tint */
-  color: #6a0dad;
+
+  color: var(--primary-purple);
+
   padding: 8px 16px;
+
   border-radius: 50px;
+
   font-size: 13px;
+
   font-weight: 700;
+
   border: 1px solid rgba(106, 13, 173, 0.1);
+
 }
+
+
 
 /* Sticky Close Button */
+
 .close-modal-fixed {
+
   position: absolute;
+
   top: 25px;
+
   right: 25px;
+
   width: 40px;
+
   height: 40px;
+
   background: #f8f5ff;
-  color: #6a0dad;
+
+  color: var(--primary-purple);
+
   border-radius: 50%;
+
   z-index: 999;
+
   cursor: pointer;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   transition: 0.3s;
+
 }
+
+
 
 .close-modal-fixed:hover {
-  background: #6a0dad;
+
+  background: var(--primary-purple);
+
   color: #white;
+
   transform: rotate(90deg);
+
 }
+
+
 
 /* Footer / Button */
+
 .modal-footer-meta {
+
   border-top: 1px solid #f0f0f0;
+
   padding-top: 30px;
+
   width: 100%;
+
 }
+
+
 
 .meta-details {
+
   margin-bottom: 25px;
+
   display: flex;
+
   justify-content: center;
+
   gap: 30px;
+
   color: #777;
+
   font-size: 14px;
+
 }
+
+
 
 .btn-purple-outline {
+
   background: transparent;
-  color: #6a0dad;
-  border: 2px solid #6a0dad;
+
+  color: var(--primary-purple);
+
+  border: 2px solid var(--primary-purple);
+
   padding: 12px 30px;
+
   border-radius: 50px;
+
   font-weight: 700;
+
   text-transform: uppercase;
+
   letter-spacing: 1px;
+
   transition: 0.3s;
+
 }
+
+
 
 .btn-purple-outline:hover {
-  background: #6a0dad;
+
+  background: var(--primary-purple);
+
   color: white;
+
   box-shadow: 0 10px 20px rgba(106, 13, 173, 0.2);
+
 }
 
+
+
 /* Mobile Adjustments */
+
 @media (max-width: 768px) {
+
   .portfolio-modal .modal-body {
+
     padding: 40px 20px;
+
   }
+
   .modal-title { font-size: 28px; }
+
   .meta-details { flex-direction: column; gap: 10px; }
+
 }
+
 
 
 /*-------------------------------------------------*/
 /* Experience Section Base */
 .experience-section {
-  padding: 100px 0;
-  background-color: #fcfaff; /* Extremely light purple tint */
+  padding: 50px 0;
+  background-color: var(--accent-lavender); /* Extremely light purple tint */
 }
 
 .experience-subtitle {
   font-size: 16px;
-  color: #7f8c8d;
+  color: var(--text-muted);
   margin-top: -30px;
   margin-bottom: 50px;
   font-weight: 500;
@@ -638,13 +975,13 @@ footer .footer-below {
 .logo-carousel-container::before {
   left: 0;
   top: 0;
-  background: linear-gradient(to right, #fcfaff 0%, rgba(252, 250, 255, 0) 100%);
+  background: linear-gradient(to right, var(--accent-lavender) 0%, rgba(252, 250, 255, 0) 100%);
 }
 
 .logo-carousel-container::after {
   right: 0;
   top: 0;
-  background: linear-gradient(to left, #fcfaff 0%, rgba(252, 250, 255, 0) 100%);
+  background: linear-gradient(to left, var(--accent-lavender) 0%, rgba(252, 250, 255, 0) 100%);
 }
 
 /* The Track */
@@ -663,7 +1000,7 @@ footer .footer-below {
   width: 180px; /* Bigger cards */
   height: 100px;
   margin: 0 10px; /* The gap */
-  background: #ffffff;
+  background: var(--text-white);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -685,7 +1022,7 @@ footer .footer-below {
 
 /* Hover State */
 .logo-item:hover {
-  border-color: #6a0dad;
+  border-color: var(--primary-purple);
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(106, 13, 173, 0.1);
 }
@@ -715,14 +1052,14 @@ footer .footer-below {
 /*-------------------------------------------------*/
 /* Services Section Base */
 .services-section {
-  padding: 100px 0;
-  background-color: #ffffff;
+  padding: 50px 0;
+  background-color: var(--text-white);
 }
 
 .purple-divider {
   width: 50px;
   height: 5px;
-  background: #6a0dad;
+  background: var(--primary-purple);
   margin: 0 auto 60px;
   border-radius: 10px;
 }
@@ -752,7 +1089,7 @@ footer .footer-below {
   width: 80px;
   height: 80px;
   background: #f8f5ff; /* Very soft purple tint */
-  color: #6a0dad;
+  color: var(--primary-purple);
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -765,29 +1102,29 @@ footer .footer-below {
 .service-item h3 {
   font-size: 18px;
   font-weight: 800;
-  color: #2c3e50;
+  color: var(--text-dark);
   margin-bottom: 15px;
   line-height: 1.3;
 }
 
 .service-item p {
   font-size: 14px;
-  color: #7f8c8d;
+  color: var(--text-muted);
   line-height: 1.6;
   margin: 0;
 }
 
 /* THE HOVER: The "Beautiful" Transition */
 .service-item:hover {
-  background: #ffffff;
+  background: var(--text-white);
   transform: translateY(-15px);
   /* This creates a soft purple glow behind the card */
   box-shadow: 0 20px 40px rgba(106, 13, 173, 0.08); 
 }
 
 .service-item:hover .service-icon {
-  background: #6a0dad;
-  color: #ffffff;
+  background: var(--primary-purple);
+  color: var(--text-white);
   transform: scale(1.1) rotate(5deg);
   box-shadow: 0 10px 20px rgba(106, 13, 173, 0.3);
 }
@@ -809,21 +1146,21 @@ footer .footer-below {
 /*-------------------------------------------------*/
 /* Education Section Base */
 .education-section {
-  padding: 100px 0;
-  background-color: #ffffff; /* Clean white break after the purple About section */
+  padding: 50px 0;
+  background-color: var(--text-white); /* Clean white break after the purple About section */
 }
 
 .section-heading {
   font-size: 36px;
   font-weight: 800;
-  color: #2c3e50;
+  color: var(--text-dark);
   margin-bottom: 10px;
 }
 
 .purple-divider {
   width: 60px;
   height: 5px;
-  background: #6a0dad;
+  background: var(--primary-purple);
   margin: 0 auto 50px;
   border-radius: 10px;
 }
@@ -837,7 +1174,7 @@ footer .footer-below {
   align-items: flex-start;
   gap: 30px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-  border-left: 6px solid #6a0dad; /* Bold brand accent */
+  border-left: 6px solid var(--primary-purple); /* Bold brand accent */
   transition: all 0.3s ease;
   margin-bottom: 40px;
 }
@@ -849,7 +1186,7 @@ footer .footer-below {
 
 .edu-icon {
   font-size: 40px;
-  color: #6a0dad;
+  color: var(--primary-purple);
   background: rgba(106, 13, 173, 0.1);
   width: 80px;
   height: 80px;
@@ -864,7 +1201,7 @@ footer .footer-below {
 .edu-content h3 {
   font-size: 24px;
   font-weight: 800;
-  color: #2c3e50;
+  color: var(--text-dark);
   margin-top: 0;
   margin-bottom: 5px;
 }
@@ -873,7 +1210,7 @@ footer .footer-below {
   display: block;
   font-size: 16px;
   font-weight: 600;
-  color: #6a0dad;
+  color: var(--primary-purple);
   margin-bottom: 5px;
 }
 
@@ -914,7 +1251,7 @@ footer .footer-below {
 
 .edu-badge {
   background: #f8f9fa;
-  color: #6a0dad;
+  color: var(--primary-purple);
   border: 1px solid rgba(106, 13, 173, 0.2);
   padding: 6px 16px;
   border-radius: 50px;
@@ -924,7 +1261,7 @@ footer .footer-below {
 }
 
 .edu-badge:hover {
-  background: #6a0dad;
+  background: var(--primary-purple);
   color: white;
 }
 
@@ -959,21 +1296,21 @@ footer .footer-below {
 /*-------------------------------------------------*/
 /* Contact Section Base */
 .contact-section {
-  padding: 100px 0;
+  padding: 50px 0;
   background: linear-gradient(135deg, #f5f7fa 0%, #ece9ff 100%); /* Soft purple tint */
 }
 
 .section-heading {
   font-size: 40px;
   font-weight: 800;
-  color: #6a0dad  ;
+  color: var(--primary-purple)  ;
   margin-bottom: 10px;
 }
 
 .purple-divider {
   width: 80px;
   height: 5px;
-  background: #6a0dad ; /* Brand Purple */
+  background: var(--primary-purple) ; /* Brand Purple */
   margin: 0 auto 50px;
   border-radius: 10px;
 }
@@ -997,7 +1334,7 @@ footer .footer-below {
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #6a0dad;
+  color: var(--primary-purple);
   letter-spacing: 1px;
   margin-bottom: 8px;
   display: block;
@@ -1014,7 +1351,7 @@ footer .footer-below {
 }
 
 .custom-input .form-control:focus {
-  border-color: #6a0dad;
+  border-color: var(--primary-purple);
   background: #fff;
   box-shadow: 0 0 15px rgba(106, 13, 173, 0.1);
   outline: none;
@@ -1022,8 +1359,8 @@ footer .footer-below {
 
 /* The Button */
 .btn-purple {
-  background: #6a0dad ;
-  background: linear-gradient(45deg, #6a0dad , #6d4ab4);
+  background: var(--primary-purple) ;
+  background: linear-gradient(45deg, var(--primary-purple) , #6d4ab4);
   color: white;
   padding: 18px 45px;
   font-size: 18px;
@@ -1053,109 +1390,132 @@ footer .footer-below {
   }
 }
 
+.disabled-btn {
+    /* opacity: 0.6; */
+    cursor: not-allowed !important;
+}
+
 
 /*-------------------------------------------------*/
 
 /* About Section Base */
+/* 1. Section Base */
 .about-section {
-  padding: 120px 0;
-  background-color: #6a0dad; /* Your specific Purple */
+  padding: 50px 0;
+  background-color: var(--secondary-midnight); /* Dark base */
+  background: radial-gradient(circle at 80% 20%, #4a0a7d 0%, var(--secondary-midnight) 100%);
   color: white;
   position: relative;
   overflow: hidden;
 }
 
-/* Subtle background decoration (Optional) */
-.about-section::before {
-  content: "";
-  position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 300px;
-  height: 300px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-}
-
-/* Heading & Divider */
-.about-heading {
-  font-size: 42px;
+/* 2. Heading & Divider (White version) */
+.section-heading-white {
+  font-size: 40px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 15px;
+  color: white;
 }
 
-.about-divider {
-  width: 70px;
-  height: 4px;
+.header-divider-white {
+  width: 60px;
+  height: 5px;
   background: white;
-  margin: 0 auto 50px;
+  margin: 20px auto 60px;
   border-radius: 10px;
-  opacity: 0.8;
 }
 
-/* Text Content */
-.about-content {
-  margin-top: 30px;
+/* 3. The Glass Bio Card */
+.about-glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  padding: 60px 50px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
 }
 
-.lead-text {
-  font-size: 19px;
+.about-subtitle {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-purple);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.about-text-highlight {
+  font-size: 20px;
   line-height: 1.8;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
+  color: #fff;
 }
 
-.secondary-text {
+.about-text-secondary {
   font-size: 17px;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.7); /* Slightly dimmer for hierarchy */
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* Modern Resume Button */
-.download-wrapper {
-  margin-top: 60px;
+/* 4. Stats Bar */
+.about-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.btn-resume {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 18px 40px;
-  font-size: 16px;
-  font-weight: 700;
+.stat-item {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-radius: 50px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-item span {
+  display: block;
+  font-size: 32px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 5px;
+}
+
+/* 5. Modern Button */
+.btn-resume-modern {
   display: inline-block;
-  text-decoration: none !important;
-}
-
-.btn-resume i {
-  margin-right: 10px;
-}
-
-.btn-resume:hover {
   background: white;
-  color: #6a0dad; /* Purple text on white hover */
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  color: var(--secondary-midnight);
+  padding: 18px 45px;
+  border-radius: 50px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none !important;
+  transition: var(--transition-smooth);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  margin-top: 40px;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .about-section {
-    padding: 80px 0;
-  }
-  .about-heading {
-    font-size: 32px;
-  }
-  .about-content p {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+.btn-resume-modern:hover {
+  transform: translateY(-5px);
+  background: var(--primary-purple);
+  color: white;
+  box-shadow: 0 15px 30px rgba(106, 13, 173, 0.4);
+}
+
+/* 6. Background Shapes */
+.about-shape-1 {
+  position: absolute;
+  width: 250px; height: 250px;
+  background: var(--primary-purple);
+  filter: blur(100px);
+  opacity: 0.2;
+  bottom: -50px; left: -50px;
 }
 
 /* Updated Header Styles */
@@ -1163,8 +1523,8 @@ footer .footer-below {
 .masthead {
   padding-top: 10px;    /* Reduced from 150px */
   padding-bottom: 20px; /* Reduced from 100px */
-  background: #6a0dad;
-  background: radial-gradient(circle at center, #832ca8 0%, #6a0dad 100%);
+  background: var(--primary-purple);
+  background: radial-gradient(circle at center, #832ca8 0%, var(--primary-purple) 100%);
   color: white;
   text-align: center;
 }
@@ -1232,132 +1592,139 @@ footer .footer-below {
 
 /* projects*/
 /* Portfolio Section Base */
+/* 1. Section Base */
 .portfolio-section {
-  padding: 100px 0;
-  background-color: #fcfaff; /* Matching your Experience section */
+    padding: 10px 0;
+    background-color: white; /* Clean break between purple sections */
+    position: relative;
 }
 
-/* Updated Grid: 3 columns on desktop, 2 on tablet, 1 on mobile */
+/* 2. The Grid */
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    padding: 20px 0;
 }
 
-/* The Project Card */
+/* 3. The Card (The Container) */
 .portfolio-card {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden; /* Clips the image zoom */
-  background: #6a0dad; /* Background color for the overlay transition */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  transition: all 0.4s ease;
+    position: relative;
+    background: #f8f5ff; /* Matches your icon background */
+    border-radius: 30px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(106, 13, 173, 0.05);
+    cursor: pointer;
 }
 
-.portfolio-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover; /* Ensures all images are the same size without stretching */
-  transition: all 0.5s ease;
-  display: block;
+/* 4. Image Wrapper (Keeps all boxes perfectly equal) */
+.portfolio-img-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Forces a professional 4:3 shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
 }
 
-/* The Modern Overlay (Purple Gradient) */
-.portfolio-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(106, 13, 173, 0.9) 0%, rgba(162, 155, 254, 0.8) 100%);
-  opacity: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s ease;
+.portfolio-img-wrapper img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain; /* Shows the whole image as you requested */
+    transition: var(--transition-smooth);
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
 }
 
-.overlay-content {
-  text-align: center;
-  color: white;
-  transform: translateY(20px);
-  transition: all 0.4s ease;
-  padding: 20px;
+/* 5. The Glass Overlay (Hidden at bottom initially) */
+.portfolio-glass-overlay {
+    position: absolute;
+    bottom: -100%; /* Hidden below */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(26, 6, 45, 0.9) 0%, rgba(106, 13, 173, 0.4) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    transition: var(--transition-smooth);
+    z-index: 2;
 }
 
-.overlay-content i {
-  font-size: 32px;
-  margin-bottom: 15px;
+.overlay-inner {
+    width: 100%;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease 0.1s;
 }
 
-.overlay-content h4 {
-  font-size: 20px;
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-  letter-spacing: 1px;
+.project-cat {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-purple);
+    background: white;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-weight: 800;
 }
 
-.overlay-content span {
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 1px;
-  opacity: 0.9;
+.project-title {
+    color: white;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 15px 0 10px;
+    letter-spacing: -0.5px;
 }
 
-/* Hover Interactions */
+.view-btn {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 6. HOVER INTERACTIONS */
 .portfolio-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(106, 13, 173, 0.2);
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(106, 13, 173, 0.15);
+    border-color: var(--primary-purple);
+}
+
+.portfolio-card:hover .portfolio-glass-overlay {
+    bottom: 0; /* Slides up */
+}
+
+.portfolio-card:hover .overlay-inner {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .portfolio-card:hover img {
-  transform: scale(1.1); /* Subtle zoom effect */
-}
-
-.portfolio-card:hover .portfolio-overlay {
-  opacity: 1;
-}
-
-.portfolio-card:hover .overlay-content {
-  transform: translateY(0);
+    transform: scale(0.85) translateY(-20px); /* Image shrinks slightly to make room for text */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2)) blur(2px);
 }
 
 /* RESPONSIVENESS */
-@media (max-width: 992px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 items on tablets */
-  }
+@media (max-width: 1024px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr; /* 1 item on phones */
-    gap: 20px;
-  }
-  .portfolio-card img {
-    height: 200px;
-  }
-}
-
-.portfolio-card img {
-  width: 100%;
-  height: 100%;
-  /* CHANGE THIS: 'contain' shows the whole image */
-  object-fit: contain; 
-  /* ADD THIS: Adds a clean background to the empty areas */
-  background-color: #f8f5ff; 
-  transition: all 0.5s ease;
-  display: block;
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-img-wrapper { aspect-ratio: 16 / 9; }
 }
 
 
 /*Footer------------------------------------------------*/
 /* Footer Base Styling */
 .footer-section {
-  background-color: #1a062d; /* Deep Midnight Purple */
+  background-color: var(--primary-purple); /* Deep Midnight Purple */
   color: white;
   padding-top: 80px;
 }
@@ -1376,9 +1743,9 @@ footer .footer-below {
 
 /* Small accent divider under headings */
 .footer-divider {
-  width: 35px;
+  width: 30px;
   height: 3px;
-  background: #6a0dad;
+  background: var(--primary-purple);
   margin: 0 auto 20px;
   border-radius: 2px;
 }
@@ -1409,7 +1776,7 @@ footer .footer-below {
 }
 
 .social-link:hover {
-  background: #6a0dad;
+  background: var(--primary-purple);
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(106, 13, 173, 0.4);
 }
@@ -1437,7 +1804,7 @@ footer .footer-below {
 .btn-scroll-top {
   width: 50px;
   height: 50px;
-  background: #6a0dad;
+  background: var(--primary-purple);
   color: white !important;
   border-radius: 50%;
   display: flex;
@@ -1460,4 +1827,212 @@ footer .footer-below {
     right: 15px;
     bottom: 15px;
   }
+}
+
+
+/* -------------------------------------------------------------------------------------------- */
+/* 1. The Masthead - More "Air" but tightly packed content */
+.masthead {
+  position: relative;
+  /* padding: 2px 0 80px; More breathing room makes it feel "Premium" */
+  background: #1a062d; /* Midnight Base */
+  background: radial-gradient(circle at 20% 30%, #4d157a 0%, #1a062d 100%);
+  color: white;
+  text-align: center;
+  overflow: hidden; /* Keeps background shapes inside */
+}
+
+/* 2. Background Decorative Shapes (The "Anti-Empty" fix) */
+.bg-shape-1, .bg-shape-2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  opacity: 0.4;
+}
+.bg-shape-1 {
+  width: 400px; height: 400px;
+  background: var(--primary-purple);
+  top: -100px; left: -100px;
+}
+.bg-shape-2 {
+  width: 300px; height: 300px;
+  background: #8e44ad;
+  bottom: -50px; right: -50px;
+}
+
+.header-content {
+    /* If there is still a gap, we use a negative margin to pull the 
+       entire content block up towards the navbar */
+    margin-top: -80px !important; 
+}
+/* 3. The Glass Card (Gives the text a "Home") */
+.glass-header-card {
+  position: relative;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 800px;
+  margin: 30px auto 0;
+}
+
+/* 4. Profile Image Styling */
+.profile-wrapper-modern {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+
+.img-profile-modern {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 6px solid rgb(255, 255, 255);
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+
+.profile-ring {
+  position: absolute;
+  top: -10px; left: -10px; right: -10px; bottom: -10px;
+  border: 2px dashed var(--primary-purple);
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+  opacity: 0.5;
+}
+
+/* 5. Typography */
+.name-modern {
+  font-size: 58px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 10px;
+  background: linear-gradient(to bottom, #fff 0%, #ccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-divider-modern {
+  width: 80px; height: 4px;
+  background: var(--primary-purple);
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.skills-modern {
+  font-size: 20px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+}
+
+/* 6. Action Buttons */
+.header-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-primary-purple {
+  background: var(--primary-purple);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.btn-secondary-white {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-primary-purple:hover { transform: translateY(-5px); color: white; }
+.btn-secondary-white:hover { background: rgba(255, 255, 255, 0.2); color: white; }
+
+/* 7. Scroll Indicator */
+.scroll-indicator {
+  margin-top: 50px;
+  display: block;
+  color: white;
+  opacity: 0.5;
+  text-decoration: none;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .name-modern { font-size: 40px; }
+  .header-actions { flex-direction: column; }
+  .masthead { padding-top: 80px; }
+}
+
+
+/* --- External CTA Grid Styling --- */
+
+.cta-container {
+    margin-top: 50px;
+    padding-bottom: 40px;
+}
+
+.cta-divider-line {
+    width: 25px;
+    height: 2px;
+    background: rgba(106, 13, 173, 0.1); /* Very faint purple */
+    margin: 0 auto 20px;
+}
+
+/* GitHub - Primary */
+.github-main-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+}
+
+.cta-link-github {
+    color: var(--primary-purple);
+    font-weight: 700;
+    text-decoration: none !important;
+    margin-left: 4px;
+    transition: 0.3s;
+}
+
+/* Kaggle - Smaller & Secondary */
+.kaggle-sub-text {
+    font-size: 13px; /* Smaller as requested */
+    color: #999;    /* Dimmer gray */
+    font-weight: 400;
+}
+
+.cta-link-kaggle {
+    color: #777; /* Less vibrant than the purple to stay secondary */
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: 0.3s;
+    border-bottom: 1px solid transparent;
+}
+
+/* Hover States */
+.cta-link-github:hover {
+    color: #8e44ad;
+    text-shadow: 0 0 10px rgba(106, 13, 173, 0.2);
+}
+
+.cta-link-kaggle:hover {
+    color: var(--primary-purple);
+    border-bottom: 1px solid rgba(106, 13, 173, 0.3);
 }

@@ -13,20 +13,41 @@
       <div class="portfolio-card">
         <a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
           
-          <div class="portfolio-overlay">
-            <div class="overlay-content">
-              <i class="fa fa-plus"></i>
-              <h4>{{ post.title }}</h4>
-              <span>{{ post.category }}</span>
-            </div>
+          <div class="portfolio-img-wrapper">
+             <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
           </div>
 
-          <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+          <div class="portfolio-glass-overlay">
+            <div class="overlay-inner">
+              <span class="project-cat">{{ post.category }}</span>
+              <h4 class="project-title">{{ post.title }}</h4>
+              <div class="view-btn">
+                <span>View Project</span> <i class="fa fa-arrow-right"></i>
+              </div>
+            </div>
+          </div>
           
         </a>
       </div>
       {% endfor %}
     </div>
 
+  </div>
+  <div class="row">
+    <div class="col-lg-12 text-center github-cta-wrapper">
+      <div class="github-divider-small"></div>
+      <p class="github-text">
+        Find more details and projects in my 
+        <a href="https://github.com/tatailes19?tab=repositories" target="_blank" class="github-link">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </p>
+      <p class="kaggle-sub-text">
+          or explore my datasets and notebooks on 
+          <a href="https://www.kaggle.com/code/tatailes/the-world-university-rankings-analysis" target="_blank" class="cta-link-kaggle">
+          <i ></i> Kaggle
+        </a>
+      </p>
+    </div>
   </div>
 </section>

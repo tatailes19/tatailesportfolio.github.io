@@ -4,7 +4,7 @@ email: tatailes34@gmail.com
 url: https://github.com/jeromelachaud/freelancer-theme
 description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
 keywords: "your keywords, separated by commas"
-skills: "Data Scientist - AI - Python - R - SQL"
+skills: "Data & Automation Engineer : Your manual chaos to automated intelligence."
 meta_author: Tata Iles
 
 # Google webmaster tools
@@ -39,24 +39,23 @@ footer:
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
-  - title: twitter
-    url: http://twitter.com/jekyllrb
-  - title: facebook
-    url:
-  - title: stack-overflow
-    url: http://stackoverflow.com/questions/tagged/jekyll
-  - title: bitbucket
-    url: http://bitbucket.org/jekyll
+  - title: linkedin
+    url: https://www.linkedin.com/in/iles-tata
+  - title: envelope
+    url: mailto:tatailes34@gmail.com
+  - title : kaggle
+    url: https://www.kaggle.com/tatailes
   - title: github
-    url: http://github.com/jekyll
+    url: https://github.com/tatailes19
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: 3481 Melrose Place
-  - line: Beverly Hills, CA 90210
+  - line: Zeralda
+  - line: ALgiers, Algeria
+  - line : tatatiles34@gmail.com
 
 # Credits content
-credits: 'Freelancer is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.'
+credits: 'Built by me upon the Freelancer framework by <a href="http://startbootstrap.com" target="_blank" style="color: var(--primary-purple); font-weight: 700;">Start Bootstrap</a>.'
 
 # Build settings
 markdown: kramdown
