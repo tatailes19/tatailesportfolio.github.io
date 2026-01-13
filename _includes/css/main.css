@@ -1441,7 +1441,7 @@ footer .footer-below {
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--primary-purple);
+  color:rgb(169, 153, 174);
   font-weight: 800;
   margin-bottom: 20px;
 }
@@ -1475,6 +1475,7 @@ footer .footer-below {
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .stat-item span {
@@ -2035,4 +2036,70 @@ footer .footer-below {
 .cta-link-kaggle:hover {
     color: var(--primary-purple);
     border-bottom: 1px solid rgba(106, 13, 173, 0.3);
+}
+
+
+
+/* --- Service Skills Styling --- */
+
+.service-skills {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center; /* Keeps them aligned with the text */
+}
+
+.service-skills span {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--primary-purple);
+    background: rgba(106, 13, 173, 0.05); /* Very light purple tint */
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(106, 13, 173, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Subtle hover effect */
+.service-item:hover .service-skills span {
+    background: rgba(106, 13, 173, 0.1);
+    border-color: rgba(106, 13, 173, 0.2);
+}
+
+/* Ensure the service text container is flexible */
+.service-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-text p {
+    flex-grow: 1; /* Pushes skills to the bottom if cards have different heights */
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html,body {
+
+  overflow-x: hidden;
+
 }
