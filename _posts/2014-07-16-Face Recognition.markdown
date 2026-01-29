@@ -3,7 +3,8 @@ layout: default
 modal-id: 3
 date: 2024-06-23
 img: dash1.gif
-images: 
+images:
+ - pfe dig.png
  - dash1.gif
  - dash2.gif
  - recognitio.gif

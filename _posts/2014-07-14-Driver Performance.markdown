@@ -7,7 +7,7 @@ images :
  - tt1.png
  - tt2.png
 alt: image-alt
-tech: [Python, PowerBi, Learn, HTML, CSS, JS, FastAPI, Wialon SDK]
+tech: [Python, PowerBI, Learn, HTML/CSS/JS, FastAPI, Wialon SDK]
 project-date: October 2024
 client: TidjeTrans
 category: Data Automation & Visualisation
