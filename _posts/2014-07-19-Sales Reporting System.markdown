@@ -15,7 +15,7 @@ alt: End-to-End Enterprise Data Platform & Automation Ecosystem
 tech: [Python, SQL Server, DuckDB, SQLite, docker, Power Query, Power BI, Telegram API, Google Apps Script, HTML/CSS/JS, Windows Scheduler, Tailscale, FastApi]
 project-date: July 2026
 client: FAMICO
-category: Data Engineering & Automation
+category: Data Engineering & Analysis Automation
 description: >
   Built and deployed a multi-layered, automated data warehouse combining data from the SQL Server ERP, Google Forms, custom forms, and other sources into a centralized system with automated processing, storage, and refresh.
   
