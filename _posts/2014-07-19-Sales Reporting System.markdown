@@ -5,12 +5,12 @@ date: 2026-07-15
 img: fmbi.jpg
 images:
   - fmc sys.png
-  - fmc3.jpg
-  - fmc1.jpg
-  - fmc5.jpg
-  - fmc2.jpg
-  - fmc4.jpg
-  - fmcbi.jpg
+  - fm3.jpg
+  - fm1.jpg
+  - fm5.jpg
+  - fm2.jpg
+  - fm4.jpg
+  - fmbi.jpg
 alt: End-to-End Enterprise Data Platform & Automation Ecosystem
 tech: [Python, SQL Server, DuckDB, SQLite, docker, Power Query, Power BI, Telegram API, Google Apps Script, HTML/CSS/JS, Windows Scheduler, Tailscale, FastApi]
 project-date: July 2026
