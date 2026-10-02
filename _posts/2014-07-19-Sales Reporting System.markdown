@@ -12,7 +12,7 @@ images:
   - fmc4.jpg
   - fmcbi.jpg
 alt: End-to-End Enterprise Data Platform & Automation Ecosystem
-tech: [Python, SQL Server, DuckDB, SQLite, Streamlit, Power Query, Power BI, Telegram API, Google Apps Script, HTML/CSS/JS, Windows Scheduler, Tailscale, Render]
+tech: [Python, SQL Server, DuckDB, SQLite, docker, Power Query, Power BI, Telegram API, Google Apps Script, HTML/CSS/JS, Windows Scheduler, Tailscale, FastApi]
 project-date: July 2026
 client: FAMICO
 category: Data Engineering & Automation
